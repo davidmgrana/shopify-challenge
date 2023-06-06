@@ -1,0 +1,33 @@
+{
+  "name": "dev-shopify-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "push": "shopify theme push --path=theme",
+    "pull": "shopify theme pull --path=theme",
+    "dev": "npm run tailwind && shopify theme dev --path=theme --theme-editor-sync",
+    "tailwind": "npx tailwindcss -i ./src/main.css -o ./theme/assets/main.css",
+    "compile:ts": "npx ts-node generate-tabs-liquid.ts ./tabs/schema.ts ./tabs/content.liquid ./tabs/tabs.vanilla.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@shopify/cli": "^3.46.2",
+    "@shopify/theme": "^3.46.2",
+    "esbuild": "^0.17.19",
+    "fs": "^0.0.1-security",
+    "preact": "^10.15.1",
+    "prettier": "^2.8.8",
+    "prettier-eslint": "^15.0.1",
+    "tailwindcss": "^3.3.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^5.59.8",
+    "eslint": "^8.42.0"
+  }
+}

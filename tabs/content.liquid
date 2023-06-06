@@ -1,0 +1,34 @@
+{%- capture block_settings -%}
+  [
+  {%- for block in section.blocks -%}
+    {&quot;settings&quot;: {{ block.settings | json | replace: '"', '&quot;' }}}{%- unless forloop.last -%},{%- endunless -%}
+  {%- endfor -%}
+  ]
+{%- endcapture -%}
+
+<div
+  class="tabs tabs-section"
+  data-section-settings="{{ section.settings }}"
+  data-section-blocks="{{ block_settings }}">
+  <h1 class="text-2xl underline underline-offset-2 ml-4 p-2">
+    Tabs Liquid
+  </h1>
+  <div class="tabs__container flex px-8 py-6 border border-solid border-[#e5e7eb] m-4 rounded-xl shadow">
+    <div class="max-w-7xl mr-auto">
+      {% for block in section.blocks %}
+        <button
+          class="group font-medium text-base px-3 rounded-md p-2 h-[50px]"
+          onclick="showTabText('tab{{ forloop.index }}')"
+          style="color: {{ block.settings.tab_color }};">
+          {{ block.settings.tab_title }}
+          <div class="block col-span-9 max-w-0 h-0.5 bg-gray-300 group-hover:max-w-[100%] transition-[max-width] duration-500"></div>
+        </button>
+      {% endfor %}
+      {% for block in section.blocks %}
+        <div id="tab{{ forloop.index }}" class="tab hidden px-3 text-xl italic">
+          {{ block.settings.tab_content }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

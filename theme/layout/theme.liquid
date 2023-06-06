@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+  <head>
+
+    <meta charset="utf-8">
+
+    <!-- Title and description ================================================== -->
+    <title>
+      {{ page_title }}{% if current_page != null %} &mdash; {{ shop.name }}{% endif %}
+    </title>
+    {{ 'main.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ content_for_header }}
+  </head>
+
+  <body class="bg-[#F3F4F6]">
+
+    {{ content_for_layout }}
+
+    <div id="container-app"></div>
+    <script src="{{ 'tabs.js' | asset_url }}" defer></script>
+  </body>
+</html>
